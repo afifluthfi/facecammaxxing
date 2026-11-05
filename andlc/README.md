@@ -31,7 +31,6 @@ Butuh: **Linux atau macOS** (di Windows pakai **WSL2 Ubuntu**), Git, ffmpeg, Nod
 ```bash
 git clone https://github.com/afifluthfi/facecammaxxing
 cd facecammaxxing
-git checkout andlc-training-kit
 python3 scripts/fcm.py setup        # sampai muncul READY (venv Python, model, Remotion)
 ```
 
