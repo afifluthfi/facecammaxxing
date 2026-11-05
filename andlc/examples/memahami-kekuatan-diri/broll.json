@@ -1,0 +1,62 @@
+[
+ {
+  "file": "broll/analytics.mp4",
+  "start": 14.6,
+  "end": 19.6
+ },
+ {
+  "file": "broll/team.mp4",
+  "start": 21.85,
+  "end": 26.6
+ },
+ {
+  "file": "broll/inspect.mp4",
+  "start": 60.3,
+  "end": 65.0
+ },
+ {
+  "file": "broll/reports.mp4",
+  "start": 91.7,
+  "end": 96.2
+ },
+ {
+  "file": "broll/waiting.mp4",
+  "start": 114.15,
+  "end": 118.6
+ },
+ {
+  "file": "broll/delegate.mp4",
+  "start": 145.3,
+  "end": 150.6
+ },
+ {
+  "file": "broll/pressure.mp4",
+  "start": 183.7,
+  "end": 188.3
+ },
+ {
+  "file": "broll/aerial.mp4",
+  "start": 233.45,
+  "end": 238.0
+ },
+ {
+  "file": "broll/late.mp4",
+  "start": 244.75,
+  "end": 248.2
+ },
+ {
+  "file": "broll/feedback.mp4",
+  "start": 354.5,
+  "end": 358.9
+ },
+ {
+  "file": "broll/collab.mp4",
+  "start": 399.6,
+  "end": 404.9
+ },
+ {
+  "file": "broll/walk.mp4",
+  "start": 416.65,
+  "end": 421.6
+ }
+]

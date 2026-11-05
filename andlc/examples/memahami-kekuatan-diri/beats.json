@@ -1,0 +1,597 @@
+[
+ {
+  "fx": "quote",
+  "start": 1.05,
+  "end": 5.3,
+  "text": "Memahami *Kekuatan* & *Kelemahan* Diri",
+  "size": 8.5
+ },
+ {
+  "fx": "text-behind",
+  "start": 10.5,
+  "end": 13.9,
+  "text": "KEKUATAN",
+  "height": 125
+ },
+ {
+  "fx": "point",
+  "start": 14.5,
+  "end": 21.5,
+  "title": "Kuat dalam analitis",
+  "items": "Melihat angka|Cepat menemukan pola",
+  "at": [
+   17.99,
+   19.38
+  ],
+  "side": "right"
+ },
+ {
+  "fx": "point",
+  "start": 21.8,
+  "end": 27.95,
+  "title": "Membangun hubungan",
+  "items": "Tim merasa nyaman",
+  "at": [
+   25.93
+  ],
+  "side": "left"
+ },
+ {
+  "fx": "point",
+  "start": 28.0,
+  "end": 32.9,
+  "title": "Disiplin",
+  "items": "Detail jarang terlewati",
+  "at": [
+   30.15
+  ],
+  "side": "right"
+ },
+ {
+  "fx": "point",
+  "start": 32.95,
+  "end": 37.5,
+  "title": "Cepat memutuskan",
+  "items": "Saat situasi mendesak",
+  "at": [
+   35.79
+  ],
+  "side": "left"
+ },
+ {
+  "fx": "prop-3d",
+  "start": 37.6,
+  "end": 40.5,
+  "model": "trophy",
+  "size": 165,
+  "light": "left",
+  "side": "right"
+ },
+ {
+  "fx": "spotlight",
+  "start": 41.0,
+  "end": 45.7,
+  "push": 1.05
+ },
+ {
+  "fx": "quote",
+  "start": 41.2,
+  "end": 45.7,
+  "text": "Yang kadang *luput* dari perhatian",
+  "size": 8
+ },
+ {
+  "fx": "text-behind",
+  "start": 46.7,
+  "end": 52.3,
+  "text": "BERLEBIHAN",
+  "height": 125
+ },
+ {
+  "fx": "prop-3d",
+  "start": 52.5,
+  "end": 55.6,
+  "model": "x",
+  "size": 165,
+  "light": "left",
+  "side": "right"
+ },
+ {
+  "fx": "point",
+  "start": 60.2,
+  "end": 73.2,
+  "title": "Estate manager yang teliti",
+  "items": "Laporan akurat|Sesuai standar|Setiap detail diperiksa",
+  "at": [
+   65.47,
+   68.94,
+   70.81
+  ],
+  "side": "right"
+ },
+ {
+  "fx": "prop-3d",
+  "start": 73.4,
+  "end": 77.0,
+  "model": "check",
+  "size": 165,
+  "light": "left",
+  "side": "right"
+ },
+ {
+  "fx": "point",
+  "start": 77.1,
+  "end": 87.2,
+  "title": "Pada awalnya",
+  "items": "Kesalahan cepat ditemukan|Kualitas terjaga|Standar tinggi dipenuhi",
+  "at": [
+   77.2,
+   80.1,
+   83.78
+  ],
+  "side": "left"
+ },
+ {
+  "fx": "text-behind",
+  "start": 87.4,
+  "end": 91.2,
+  "text": "NAMUN…",
+  "height": 125
+ },
+ {
+  "fx": "point",
+  "start": 91.6,
+  "end": 99.3,
+  "title": "Semua lewat dia",
+  "items": "Setiap laporan diperiksa|Keputusan kecil dikonsultasikan",
+  "at": [
+   91.7,
+   95.5
+  ],
+  "side": "right"
+ },
+ {
+  "fx": "prop-3d",
+  "start": 99.4,
+  "end": 105.8,
+  "model": "clock",
+  "size": 165,
+  "light": "left",
+  "side": "left",
+  "hours": 3
+ },
+ {
+  "fx": "text-behind",
+  "start": 106.0,
+  "end": 111.0,
+  "text": "KUALITAS",
+  "height": 125
+ },
+ {
+  "fx": "grade",
+  "start": 111.5,
+  "end": 124.3,
+  "grade": "moody"
+ },
+ {
+  "fx": "point",
+  "start": 113.9,
+  "end": 124.4,
+  "title": "Tanpa disadari",
+  "items": "Tim kehilangan ruang|Proses melambat|Manajer makin sibuk",
+  "at": [
+   114.2,
+   118.6,
+   121.8
+  ],
+  "side": "right"
+ },
+ {
+  "fx": "quote",
+  "start": 124.9,
+  "end": 129.0,
+  "text": "Apakah ketelitian sebuah *kelemahan*?",
+  "size": 8
+ },
+ {
+  "fx": "text-behind",
+  "start": 131.5,
+  "end": 134.2,
+  "text": "KEKUATAN",
+  "height": 125
+ },
+ {
+  "fx": "point",
+  "start": 134.3,
+  "end": 139.4,
+  "title": "Yang perlu dievaluasi",
+  "items": "Bagaimana kekuatan itu digunakan",
+  "at": [
+   136.42
+  ],
+  "side": "left"
+ },
+ {
+  "fx": "point",
+  "start": 139.6,
+  "end": 153.4,
+  "title": "Dipakai di mana?",
+  "items": "Pekerjaan yang butuh kontrol ketat|Atau semua hal?|Yang bisa didelegasikan",
+  "at": [
+   141.53,
+   145.3,
+   152.33
+  ],
+  "side": "right"
+ },
+ {
+  "fx": "point",
+  "start": 156.2,
+  "end": 172.9,
+  "title": "Memahami diri",
+  "items": "Apa yang kita kuasai|Kapan kekuatan membantu|Kapan perlu disesuaikan",
+  "at": [
+   162.69,
+   166.45,
+   170.27
+  ],
+  "side": "left"
+ },
+ {
+  "fx": "text-behind",
+  "start": 175.3,
+  "end": 178.0,
+  "text": "KELEMAHAN",
+  "height": 125
+ },
+ {
+  "fx": "spotlight",
+  "start": 178.2,
+  "end": 183.4,
+  "push": 1.05
+ },
+ {
+  "fx": "quote",
+  "start": 178.4,
+  "end": 183.4,
+  "text": "Sesuatu yang *disembunyikan*",
+  "size": 8
+ },
+ {
+  "fx": "point",
+  "start": 183.6,
+  "end": 194.3,
+  "title": "Tekanan seorang manajer",
+  "items": "Terlihat kompeten|Terlihat yakin|Punya semua jawaban",
+  "at": [
+   187.73,
+   188.9,
+   190.68
+  ],
+  "side": "right"
+ },
+ {
+  "fx": "grade",
+  "start": 194.4,
+  "end": 201.0,
+  "grade": "cool"
+ },
+ {
+  "fx": "quote",
+  "start": 201.4,
+  "end": 204.6,
+  "text": "Tidak ada yang unggul dalam *segala hal*",
+  "size": 7.5
+ },
+ {
+  "fx": "point",
+  "start": 204.7,
+  "end": 209.9,
+  "title": "Kuat di aspek teknis",
+  "items": "Perlu: komunikasi",
+  "at": [
+   206.83
+  ],
+  "side": "right"
+ },
+ {
+  "fx": "point",
+  "start": 210.0,
+  "end": 215.4,
+  "title": "Pandai menjalin relasi",
+  "items": "Perlu: analisis data",
+  "at": [
+   212.18
+  ],
+  "side": "left"
+ },
+ {
+  "fx": "point",
+  "start": 215.5,
+  "end": 222.8,
+  "title": "Cepat memutuskan",
+  "items": "Perlu: menimbang risiko",
+  "at": [
+   218.07
+  ],
+  "side": "right"
+ },
+ {
+  "fx": "point",
+  "start": 222.9,
+  "end": 229.2,
+  "title": "Berorientasi hasil",
+  "items": "Perlu: mendengarkan tim",
+  "at": [
+   225.18
+  ],
+  "side": "left"
+ },
+ {
+  "fx": "text-behind",
+  "start": 229.5,
+  "end": 233.1,
+  "text": "BERKEMBANG",
+  "height": 125
+ },
+ {
+  "fx": "point",
+  "start": 236.0,
+  "end": 240.5,
+  "title": "Mulai dari yang konkret",
+  "side": "right"
+ },
+ {
+  "fx": "text-behind",
+  "start": 240.9,
+  "end": 244.4,
+  "text": "BERULANG",
+  "height": 125
+ },
+ {
+  "fx": "point",
+  "start": 244.6,
+  "end": 263.2,
+  "title": "Persoalan yang berulang",
+  "items": "Laporan terlambat?|Kesalahan yang sama?|Instruksi tak dipahami?|Mengambil alih pekerjaan?",
+  "at": [
+   244.8,
+   248.3,
+   251.85,
+   256.5
+  ],
+  "side": "left"
+ },
+ {
+  "fx": "prop-3d",
+  "start": 263.5,
+  "end": 267.2,
+  "model": "x",
+  "size": 165,
+  "light": "left",
+  "side": "right"
+ },
+ {
+  "fx": "point",
+  "start": 267.3,
+  "end": 273.3,
+  "title": "Bisa jadi karena",
+  "items": "Sistem|Sumber daya|Kompetensi|Kondisi operasional",
+  "at": [
+   268.83,
+   269.38,
+   270.27,
+   271.43
+  ],
+  "side": "left"
+ },
+ {
+  "fx": "text-behind",
+  "start": 277.8,
+  "end": 281.5,
+  "text": "MEMIMPIN",
+  "height": 125
+ },
+ {
+  "fx": "quote",
+  "start": 281.8,
+  "end": 285.0,
+  "text": "*Tiga* pertanyaan",
+  "size": 9
+ },
+ {
+  "fx": "point",
+  "start": 285.1,
+  "end": 297.1,
+  "n": "PERTAMA",
+  "title": "Apa kekuatan utama saya?",
+  "items": "Bukan sekadar yang saya sukai|Yang benar-benar menghasilkan kinerja",
+  "at": [
+   290.2,
+   292.7
+  ],
+  "side": "right"
+ },
+ {
+  "fx": "point",
+  "start": 297.2,
+  "end": 323.4,
+  "n": "KEDUA",
+  "title": "Kapan kekuatan itu kurang efektif?",
+  "items": "Ketegasan: jelas, atau menakutkan?|Kecepatan: gesit, atau terburu-buru?",
+  "at": [
+   303.8,
+   314.5
+  ],
+  "side": "left"
+ },
+ {
+  "fx": "point",
+  "start": 323.5,
+  "end": 335.6,
+  "n": "KETIGA",
+  "title": "Satu perilaku yang perlu diperbaiki",
+  "items": "Pilih satu yang konkret|Tak harus mengubah semuanya",
+  "at": [
+   330.9,
+   332.77
+  ],
+  "side": "right"
+ },
+ {
+  "fx": "point",
+  "start": 335.7,
+  "end": 346.2,
+  "title": "Sering memotong pembicaraan?",
+  "items": "Beri kesempatan menyelesaikan",
+  "at": [
+   341.0
+  ],
+  "side": "left"
+ },
+ {
+  "fx": "point",
+  "start": 346.3,
+  "end": 354.3,
+  "title": "Terlalu cepat mengambil alih?",
+  "items": "Minta supervisor memaparkan rencananya",
+  "at": [
+   349.36
+  ],
+  "side": "right"
+ },
+ {
+  "fx": "point",
+  "start": 354.4,
+  "end": 364.8,
+  "title": "Menghindari percakapan sulit?",
+  "items": "Umpan balik yang jelas|Spesifik|Tetap menghargai",
+  "at": [
+   361.01,
+   361.47,
+   362.39
+  ],
+  "side": "left"
+ },
+ {
+  "fx": "text-behind",
+  "start": 370.0,
+  "end": 373.6,
+  "text": "KONSISTEN",
+  "height": 125
+ },
+ {
+  "fx": "point",
+  "start": 373.7,
+  "end": 378.0,
+  "title": "Dampaknya terasa pada",
+  "items": "Hubungan kerja|Kualitas keputusan",
+  "at": [
+   374.28,
+   375.75
+  ],
+  "side": "right"
+ },
+ {
+  "fx": "spotlight",
+  "start": 378.2,
+  "end": 384.6,
+  "push": 1.05
+ },
+ {
+  "fx": "quote",
+  "start": 378.4,
+  "end": 384.6,
+  "text": "Bukan berarti kehilangan *wibawa*",
+  "size": 8
+ },
+ {
+  "fx": "prop-3d",
+  "start": 385.0,
+  "end": 392.3,
+  "model": "check",
+  "size": 165,
+  "light": "left",
+  "side": "right"
+ },
+ {
+  "fx": "point",
+  "start": 392.8,
+  "end": 405.4,
+  "title": "Ia tahu kapan perlu",
+  "items": "Belajar|Minta masukan|Mendelegasikan|Melibatkan ahli lain",
+  "at": [
+   394.05,
+   395.82,
+   397.54,
+   399.65
+  ],
+  "side": "left"
+ },
+ {
+  "fx": "quote",
+  "start": 408.4,
+  "end": 415.5,
+  "text": "Hasil terbaik tak harus datang dari *satu orang*",
+  "size": 7.5
+ },
+ {
+  "fx": "point",
+  "start": 423.2,
+  "end": 427.7,
+  "title": "Setiap orang berbeda",
+  "items": "Pengalaman|Karakter|Tantangan",
+  "at": [
+   424.61,
+   425.26,
+   426.01
+  ],
+  "side": "right"
+ },
+ {
+  "fx": "point",
+  "start": 427.8,
+  "end": 437.8,
+  "title": "Lebih baik memahami",
+  "items": "Kekuatan kita|Yang perlu dikembangkan|Pengaruhnya pada cara memimpin",
+  "at": [
+   430.74,
+   431.7,
+   434.62
+  ],
+  "side": "left"
+ },
+ {
+  "fx": "quote",
+  "start": 438.1,
+  "end": 443.6,
+  "text": "Bukan tentang menjadi *sempurna*",
+  "size": 8.5
+ },
+ {
+  "fx": "point",
+  "start": 443.8,
+  "end": 455.4,
+  "title": "Pengembangan diri",
+  "items": "Gunakan kekuatan dengan tepat|Perbaiki keterbatasan",
+  "at": [
+   446.45,
+   449.9
+  ],
+  "side": "right"
+ },
+ {
+  "fx": "quote",
+  "start": 455.6,
+  "end": 461.9,
+  "text": "Berani melihat diri secara *jujur*",
+  "size": 8.5
+ },
+ {
+  "fx": "quote",
+  "start": 462.1,
+  "end": 465.66,
+  "text": "*Sukses selalu.*",
+  "size": 9
+ }
+]

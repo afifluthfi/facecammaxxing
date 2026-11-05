@@ -1,0 +1,15 @@
+{
+  "watermark": "www.and-lc.com",
+  "lower_third": {
+    "name": "Drs. Andreas Imawanto, M.M., Psikolog",
+    "role": "CEO AND Learning & Coaching",
+    "start": 0.4,
+    "end": 9.3
+  },
+  "subtitle_max_chars": 42,
+  "gold_words": ["kekuatan", "kelemahan", "ketelitian", "teliti", "delegasikan", "didelegasikan", "konkret", "jujur",
+                 "konsisten", "wibawa", "efektif", "kinerja", "memimpin", "berlebihan", "berulang", "pola", "kualitas",
+                 "dikembangkan", "sempurna"],
+  "max_still_seconds": 3.3,
+  "broll_max_seconds": 5.0
+}
