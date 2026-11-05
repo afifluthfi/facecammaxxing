@@ -84,7 +84,7 @@ const secs = () => `${((Date.now() - t0) / 1000).toFixed(0)}s`;
 process.stdout.write('Bundling... ');
 const serveUrl = await bundle({ entryPoint: path.join(here, 'src/index.ts'), publicDir: job, onProgress: () => {} });
 console.log(secs());
-const chromiumOptions = { gl: 'angle' };
+const chromiumOptions = { gl: process.env.FCM_GL || 'angle' };
 // a Chrome of your own (offline, or a locked-down network): --browser <path> or FCM_BROWSER
 const browserExecutable = args.browser ?? process.env.FCM_BROWSER ?? null;
 const scale = Number(args.scale ?? 1);

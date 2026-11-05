@@ -1,19 +1,26 @@
-import { loadFont as anton } from '@remotion/google-fonts/Anton';
-import { loadFont as archivo } from '@remotion/google-fonts/ArchivoBlack';
-import { loadFont as inter } from '@remotion/google-fonts/Inter';
-import { loadFont as serif } from '@remotion/google-fonts/InstrumentSerif';
-import { loadFont as mono } from '@remotion/google-fonts/SpaceMono';
-import { loadFont as script } from '@remotion/google-fonts/Parisienne';
+import { continueRender, delayRender, staticFile } from 'remotion';
 
-const A = anton('normal', { weights: ['400'], subsets: ['latin'] });
-const B = archivo('normal', { weights: ['400'], subsets: ['latin'] });
-const I = inter('normal', { weights: ['500', '600', '700', '800'], subsets: ['latin'] });
-const S = serif('italic', { weights: ['400'], subsets: ['latin'] });
-const M = mono('normal', { weights: ['400', '700'], subsets: ['latin'] });
-const P = script('normal', { weights: ['400'], subsets: ['latin'] });
+// Fonts are served from the job folder (fonts/*.woff2), so rendering needs no access to Google Fonts.
+type Face = [family: string, file: string, weight: string, style: string];
+const FACES: Face[] = [
+  ['FCM Anton', 'anton-400-normal.woff2', '400', 'normal'],
+  ['FCM Archivo Black', 'bold-400-normal.woff2', '400', 'normal'],
+  ['FCM Inter', 'ui-500-normal.woff2', '500 800', 'normal'],
+  ['FCM Instrument Serif', 'serif-400-italic.woff2', '400', 'italic'],
+  ['FCM Space Mono', 'mono-400-normal.woff2', '400', 'normal'],
+  ['FCM Space Mono', 'mono-700-normal.woff2', '700', 'normal'],
+  ['FCM Parisienne', 'script-400-normal.woff2', '400', 'normal'],
+];
+
+const handle = delayRender('fonts');
+export const fontsReady = Promise.all(FACES.map(async ([family, file, weight, style]) => {
+  const f = new FontFace(family, `url(${staticFile(`fonts/${file}`)}) format('woff2')`, { weight, style });
+  await f.load();
+  (document.fonts as unknown as { add: (f: FontFace) => void }).add(f);
+}));
+fontsReady.then(() => continueRender(handle));
 
 export const FONT = {
-  anton: A.fontFamily, bold: B.fontFamily, ui: I.fontFamily, serif: S.fontFamily, mono: M.fontFamily, script: P.fontFamily,
+  anton: 'FCM Anton', bold: 'FCM Archivo Black', ui: 'FCM Inter', serif: 'FCM Instrument Serif', mono: 'FCM Space Mono', script: 'FCM Parisienne',
 } as const;
 export type FontKey = keyof typeof FONT;
-export const fontsReady = Promise.all([A, B, I, S, M, P].map((f) => f.waitUntilDone()));

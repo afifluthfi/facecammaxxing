@@ -101,7 +101,7 @@ const World: React.FC<{ p: Props; L: Look; active: Active[]; id: string; style?:
         : <Layer key={`b${a.i}`} p={p} a={a} slot="Behind" style={{ ...T(a.def.depth === 'room' ? roomZ : behindZ), ...bf }} map={held} />)}
       </>)}
       {inCard(L.card?.you ?? '', <>
-      {active.length ? (
+      {(active.some((a) => a.def.Behind || a.def.person || a.def.personScale || a.def.card) || L.sticker > 0.2 || L.rf || L.dof > 0.2 || L.clean || L.card) ? (
         <AbsoluteFill style={T(z)}>
           <AbsoluteFill style={body}>
             {L.sticker > 0.2 ? (

@@ -7,6 +7,7 @@ import { CardRing } from './CardRing';
 import { GlassBehind, GlassFront } from './GlassWidgets';
 import { GLASS_GRAPH, GUIDE } from './guide';
 import { MODEL_PROP } from './Prop3D';
+import { BROLL, FOOTER, LOWER, POINT, QUOTE, SUB } from './andlc';
 import { BOTTOM_FADE, KINETIC_CAPTION, NAME_TAG, SILHOUETTE_INTRO, WINDOW_CARDS } from './reels';
 
 // Every effect is a pure function of its own clock (c.t from 0 to c.d seconds) and the tracked face.
@@ -207,6 +208,12 @@ export const EFFECTS: Record<string, FxDef> = {
   'silhouette-intro': SILHOUETTE_INTRO,
   'bottom-fade': BOTTOM_FADE,
   'prop-3d': MODEL_PROP,
+  sub: SUB,
+  broll: BROLL,
+  footer: FOOTER,
+  lower: LOWER,
+  point: POINT,
+  quote: QUOTE,
   grade: {
     desc: 'A colour grade on the room and you',
     options: 'grade (moody | bw | warm | cool | pop)',
