@@ -2,7 +2,7 @@
 """AND-LC video kit: the house style for AND Learning & Coaching training videos, on top of facecammaxxing.
 
   andlc.py prep   <video> [<job>]                       cut-out + face track + fonts + Indonesian transcript
-  andlc.py cut    <job> [--level ringan|sedang|agresif] shorten the pauses -> <job>_cut (+ <job>/cuts.json)
+  andlc.py cut    <job> [--level ..] [--protect 0-9] shorten the pauses -> <job>_cut (+ <job>/cuts.json)
   andlc.py plan   <job> --beats beats.json [--broll broll.json] [--cut] [--name ..] [--role ..] [--out plan.json]
                                                         subtitles + camera every ~3 s + beats + B-roll + footer + lower third
   andlc.py check  <job> <plan.json> --at 5,60,120       stills + contact sheet before the long render
@@ -80,8 +80,10 @@ def cut(a):
     log = subprocess.run(['ffmpeg', '-v', 'info', '-i', os.path.join(job, 'source.mp4'), '-vn', '-af',
                           f'silencedetect=noise={db}dB:d={dmin}', '-f', 'null', '-'], capture_output=True, text=True).stderr
     gaps = [(float(e) - float(d), float(e)) for e, d in re.findall(r'silence_end: ([\d.]+) \| silence_duration: ([\d.]+)', log)]
+    prot = [tuple(map(float, r.split('-'))) for r in (a.protect or '').split(',') if r]
     rm = []
     for s, e in gaps:
+        if any(s < q1 and e > q0 for q0, q1 in prot): continue      # protected: e.g. a demo, music, a tapped rhythm
         x0 = s + pre if s > 0.05 else 0.0
         x1 = e - post
         if x1 >= n / fps - 0.05: x1 = n / fps; x0 = s + 0.9          # keep a soft tail at the end
@@ -244,6 +246,7 @@ def plan(a):
     lt = dict(B['lower_third'])
     if a.name: lt['name'] = a.name
     if a.role: lt['role'] = a.role
+    if a.lower: lt['start'], lt['end'] = map(float, a.lower.split('-'))
     effects = CAMS + beats + brolls + [
         {'fx': 'lower', 'start': lt['start'], 'end': lt['end'], 'name': lt['name'], 'role': lt['role']},
         {'fx': 'footer', 'start': 0, 'end': DUR, 'text': B['watermark']}] + subs
@@ -261,7 +264,7 @@ def plan(a):
                 if f <= x1: return round((o + f - x0) / fps, 3)
             return round(acc / fps, 3)
         for x in effects:
-            if x['fx'] == 'lower': continue
+            if x['fx'] == 'lower' and not a.lower: continue   # brand default: first ~10 s of the cut film
             x['start'], x['end'] = R(x['start']), R(x['end'])
             for key in ('times', 'at'):
                 if x.get(key): x[key] = ','.join(f'{R(float(v)):.3f}' for v in str(x[key]).split(','))
@@ -304,9 +307,11 @@ def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sp = p.add_subparsers(dest='cmd', required=True)
     x = sp.add_parser('prep'); x.add_argument('video'); x.add_argument('job', nargs='?'); x.add_argument('--width', type=int, default=1280, help='lebar kerja (1280 = 720p landscape)'); x.set_defaults(f=prep)
-    x = sp.add_parser('cut'); x.add_argument('job'); x.add_argument('--level', default='sedang', choices=LEVELS); x.add_argument('--out'); x.set_defaults(f=cut)
+    x = sp.add_parser('cut'); x.add_argument('job'); x.add_argument('--level', default='sedang', choices=LEVELS);
+    x.add_argument('--protect', help='bagian yang jedanya tidak boleh dipotong, detik: 0-9,60-65'); x.add_argument('--out'); x.set_defaults(f=cut)
     x = sp.add_parser('plan'); x.add_argument('job'); x.add_argument('--beats'); x.add_argument('--broll'); x.add_argument('--cut', action='store_true')
     x.add_argument('--name', help='nama di lower third (default: brand.json)'); x.add_argument('--role', help='jabatan di lower third')
+    x.add_argument('--lower', help='waktu lower third di video asli, mis. 23.3-27.5 (default: brand.json)')
     x.add_argument('--out'); x.set_defaults(f=plan)
     x = sp.add_parser('check'); x.add_argument('job'); x.add_argument('plan'); x.add_argument('--at'); x.set_defaults(f=check)
     x = sp.add_parser('render'); x.add_argument('job'); x.add_argument('plan'); x.add_argument('--out'); x.add_argument('--concurrency', type=int, default=4)
