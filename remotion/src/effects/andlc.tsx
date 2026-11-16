@@ -180,7 +180,9 @@ export const POINT: FxDef = {
 // The quieter cousin of text-behind for whole phrases: a centred italic serif line high in the frame, behind the head,
 // focusing up word by word and lifting slowly.
 const Quote: React.FC<{ c: FxCtx }> = ({ c }) => {
-  const words = str(c, 'text', '').split(/\s+/).filter(Boolean);
+  // `*a few words*` marks a whole phrase gold: give each word of the phrase its own stars
+  const words = str(c, 'text', '').replace(/\*([^*]+)\*/g, (_m, g: string) => g.split(/\s+/).map((w) => `*${w}*`).join(' '))
+    .split(/\s+/).filter(Boolean);
   const out = e('power2.in', c.t, c.d - 0.35, 0.35);
   const fs = u(c, opt(c, 'size', 9));
   const lift = c.t * u(c, 0.35);
