@@ -3,7 +3,7 @@
 
   andlc.py prep   <video> [<job>]                       cut-out + face track + fonts + Indonesian transcript
   andlc.py cut    <job> [--level ringan|sedang|agresif] shorten the pauses -> <job>_cut (+ <job>/cuts.json)
-  andlc.py plan   <job> --beats beats.json [--broll broll.json] [--cut] [--out plan.json]
+  andlc.py plan   <job> --beats beats.json [--broll broll.json] [--cut] [--name ..] [--role ..] [--out plan.json]
                                                         subtitles + camera every ~3 s + beats + B-roll + footer + lower third
   andlc.py check  <job> <plan.json> --at 5,60,120       stills + contact sheet before the long render
   andlc.py render <job> <plan.json> [--out final.mp4]   full render, then a compressed copy for sharing (*_share.mp4)
@@ -241,7 +241,9 @@ def plan(a):
     beats = kept
     brolls = [{'fx': 'broll', 'start': r['start'], 'end': r['end'], 'src': r['file'], **({'from': r['from']} if 'from' in r else {})} for r in BR]
 
-    lt = B['lower_third']
+    lt = dict(B['lower_third'])
+    if a.name: lt['name'] = a.name
+    if a.role: lt['role'] = a.role
     effects = CAMS + beats + brolls + [
         {'fx': 'lower', 'start': lt['start'], 'end': lt['end'], 'name': lt['name'], 'role': lt['role']},
         {'fx': 'footer', 'start': 0, 'end': DUR, 'text': B['watermark']}] + subs
@@ -304,6 +306,7 @@ def main():
     x = sp.add_parser('prep'); x.add_argument('video'); x.add_argument('job', nargs='?'); x.add_argument('--width', type=int, default=1280, help='lebar kerja (1280 = 720p landscape)'); x.set_defaults(f=prep)
     x = sp.add_parser('cut'); x.add_argument('job'); x.add_argument('--level', default='sedang', choices=LEVELS); x.add_argument('--out'); x.set_defaults(f=cut)
     x = sp.add_parser('plan'); x.add_argument('job'); x.add_argument('--beats'); x.add_argument('--broll'); x.add_argument('--cut', action='store_true')
+    x.add_argument('--name', help='nama di lower third (default: brand.json)'); x.add_argument('--role', help='jabatan di lower third')
     x.add_argument('--out'); x.set_defaults(f=plan)
     x = sp.add_parser('check'); x.add_argument('job'); x.add_argument('plan'); x.add_argument('--at'); x.set_defaults(f=check)
     x = sp.add_parser('render'); x.add_argument('job'); x.add_argument('plan'); x.add_argument('--out'); x.add_argument('--concurrency', type=int, default=4)

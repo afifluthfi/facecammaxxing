@@ -9,7 +9,9 @@ import { FONT } from '../lib/fonts';
 // ~6 frames and focus up from a blur, exits ease in, holds keep a slow drift.
 
 export const GOLD = '#E9B85C';
-const u = (c: FxCtx, v: number) => (v * c.H) / 100;
+const u = (c: FxCtx, v: number) => (v * Math.min(c.W, c.H)) / 100;
+// Portrait (9:16): keep text above the Reels/Shorts caption zone (bottom ~20 %) and cards under the chin.
+const tall = (c: FxCtx) => c.H > c.W * 1.2;
 const glass = (c: FxCtx): React.CSSProperties => ({
   background: 'linear-gradient(160deg, rgba(22,24,30,0.62), rgba(14,15,19,0.5))',
   border: '1px solid rgba(255,255,255,0.18)', borderRadius: u(c, 1.6),
@@ -29,7 +31,7 @@ const Sub: React.FC<{ c: FxCtx }> = ({ c }) => {
   return (
     <AbsoluteFill>
       <div style={{
-        position: 'absolute', left: c.W * 0.12, width: c.W * 0.76, bottom: u(c, opt(c, 'bottom', 9.5)), textAlign: 'center',
+        position: 'absolute', left: c.W * 0.12, width: c.W * 0.76, bottom: tall(c) ? c.H * opt(c, 'bottom', 0.235) : u(c, opt(c, 'bottom', 9.5)), textAlign: 'center',
         fontFamily: FONT.ui, fontWeight: 600, fontSize: fs, lineHeight: 1.22, letterSpacing: '-0.01em', color: '#fff',
         textShadow: `0 ${u(c, 0.2)}px ${u(c, 1.2)}px rgba(0,0,0,0.75), 0 0 ${u(c, 3)}px rgba(0,0,0,0.35)`,
         transform: `translateY(${out * u(c, 1.2)}px)`, filter: out > 0.01 ? `blur(${out * u(c, 0.9)}px)` : undefined, opacity: 1 - out * 0.9,
@@ -65,7 +67,8 @@ const Footer: React.FC<{ c: FxCtx }> = ({ c }) => {
     <AbsoluteFill>
       <AbsoluteFill style={{ background: `linear-gradient(180deg, rgba(0,0,0,0) 62%, rgba(0,0,0,${0.42 * k}) 100%)` }} />
       <div style={{
-        position: 'absolute', right: u(c, 3.2), bottom: u(c, 2.6), display: 'flex', alignItems: 'center', gap: u(c, 1.1),
+        position: 'absolute', ...(tall(c) ? { left: 0, right: 0, justifyContent: 'center', bottom: c.H * 0.2 } : { right: u(c, 3.2), bottom: u(c, 2.6) }),
+        display: 'flex', alignItems: 'center', gap: u(c, 1.1),
         fontFamily: FONT.ui, fontWeight: 600, fontSize: fs, letterSpacing: '0.04em', color: 'rgba(255,255,255,0.86)',
         textShadow: '0 1px 6px rgba(0,0,0,0.5)', opacity: k, transform: `translateX(${(1 - k) * u(c, 2)}px)`,
       }}>
@@ -124,10 +127,11 @@ export const LOWER: FxDef = {
 // their own clip times (`at`). Arrives from slightly oversize and focusing, drifts while it holds, sinks and softens out.
 const Point: React.FC<{ c: FxCtx }> = ({ c }) => {
   const { face, W, H } = c;
-  const side = str(c, 'side', face.x > W / 2 ? 'left' : 'right');
-  const w = c.W * opt(c, 'width', 0.3);
+  const chin = tall(c);
+  const side = chin ? 'chin' : str(c, 'side', face.x > W / 2 ? 'left' : 'right');
+  const w = c.W * (chin ? opt(c, 'width', 0.8) : opt(c, 'width', 0.3));
   const gap = face.w * 1.05;
-  const x = side === 'left' ? clamp(face.x - gap - w, u(c, 4), W) : clamp(face.x + gap, 0, W - u(c, 4) - w);
+  const x = chin ? (W - w) / 2 : side === 'left' ? clamp(face.x - gap - w, u(c, 4), W) : clamp(face.x + gap, 0, W - u(c, 4) - w);
   const items = list(c, 'items', []);
   const at = list(c, 'at', []).map(Number);
   const t = c.t + c.o.start;
@@ -135,13 +139,13 @@ const Point: React.FC<{ c: FxCtx }> = ({ c }) => {
   const drift = Math.sin(c.t * 0.9) * u(c, 0.35);
   const dir = side === 'left' ? 1 : -1;
   const title = str(c, 'title', ''), num = str(c, 'n', '');
-  const yc = H * opt(c, 'y', 0.42);
+  const yc = chin ? Math.max(H * opt(c, 'y', 0.5), face.y + face.w * 0.95) : H * opt(c, 'y', 0.42);
   return (
     <AbsoluteFill>
       <div style={{
         position: 'absolute', left: x, top: yc, width: w, boxSizing: 'border-box', padding: `${u(c, 2.6)}px ${u(c, 2.8)}px`, ...glass(c),
-        transform: `translateY(-50%) translateY(${drift + out * u(c, 3)}px) scale(${lerp(1.18, 1, k)}) rotate(${(1 - k) * -4 * dir}deg)`,
-        transformOrigin: side === 'left' ? '100% 50%' : '0% 50%',
+        transform: `translateY(${chin ? 0 : -50}%) translateY(${drift + out * u(c, 3)}px) scale(${lerp(1.18, 1, k)}) rotate(${(1 - k) * -4 * dir}deg)`,
+        transformOrigin: chin ? '50% 0%' : side === 'left' ? '100% 50%' : '0% 50%',
         opacity: clamp(k * 3) * (1 - out), filter: k < 0.98 || out > 0.01 ? `blur(${((1 - k) + out) * u(c, 1)}px)` : undefined,
       }}>
         {num ? <div style={{ fontFamily: FONT.ui, fontWeight: 800, fontSize: u(c, 3.2), letterSpacing: '0.08em', lineHeight: 1, color: GOLD, marginBottom: u(c, 1.1) }}>{num}</div> : null}
